@@ -10,12 +10,12 @@ class Circle
     void setRadius(int radius) { this->radius=radius; };
 };
 
-void swap(Circle *c1, Circle *c2)
+void swap(Circle &c1, Circle &c2)
 {
     Circle tmp;
-    tmp=*c1;
-    *c1=*c2;
-    *c2=tmp;
+    tmp=c1;
+    c1=c2;
+    c2=tmp;
 }
 
 int main()
