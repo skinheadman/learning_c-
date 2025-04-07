@@ -161,27 +161,3 @@
 //     Circle b;
 //     cout << "생존하고 있는 원의 개수 = " << Circle::getNumOfCircles() << "\n";
 // }
-
-#include <iostream>
-#include <string>
-#include <ctime>
-#include <cstdlib>
-using namespace std;
-
-int main()
-{
-    string DEBUG_ARRAY[2];
-    srand((unsigned)time(0));
-    cout << 1;
-    for(int i=0;i<2;i++)
-    {
-        DEBUG_ARRAY[i] = "Array";
-        cout << 2;
-    }
-
-    for(int i=0; i<2;i++)
-    {
-        cout << DEBUG_ARRAY[i] << " ";
-        cout << 3;
-    }
-}

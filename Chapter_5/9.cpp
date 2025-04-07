@@ -1,5 +1,4 @@
 #include <iostream>
-#include <math.h>
 using namespace std;
 
 class Accumulator
@@ -7,16 +6,18 @@ class Accumulator
     int value;
     public :
     Accumulator(int value);
-    Accumulator& add(int n)
-    {
-        value+=n;
-    }
+    Accumulator& add(int n);
     int get();
 };
 
 Accumulator::Accumulator(int value)
 {
     this->value=value;
+}
+
+Accumulator& Accumulator::add(int n)
+{
+    value+=n;
 }
 
 int Accumulator::get()

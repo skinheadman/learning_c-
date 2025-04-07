@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int add(int a[], const int b, int *c=nullptr) {
+int add(int a[], const int b, int *c={0}) {
     int total = 0;
         for (int i = 0; i < b; i++) {
             cout << a[i] << c[i] ;
