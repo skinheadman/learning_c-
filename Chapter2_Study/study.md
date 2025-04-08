@@ -32,4 +32,16 @@
     - string 클래스 : 문자열을 객체로 다루는 방법(권장)
         - string 헤더 파일 include 필요
         - getline(istream&,string&) 사용 가능 -> getline(cin,string&)
-    
+### 2.5 #include <iostream>에 숨겨진 진실
+##  전처리기
+    - 컴파일 전에 전처리기 먼저 실행 -> #include 된 헤더파일 전부 읽기
+    - 헤더파일의 확장 : #include 문에 지정된 헤더파일의 텍스트를 #include 문이 있던 자리에 삽입
+    - iostream의 처리 과정 : iostream -> istream -> ostream -> ios
+    - 헤더파일은 확장자가 없다. 근데 텍스트 파일임
+    - C++ <cstring> : using namespace std;와 같이 써야함. but <string.h>는 그냥 사용 가능 하지만 cstring이 표준이다.
+##  #include <헤더파일> 과 "헤더파일"의 차이
+    - #include <헤더파일> : 컴파일러가 설치된 폴더에서 헤더파일을 찾아라
+    - #include "헤더파일" : 개발자의 프로젝트 폴더나 컴파일 옵션에서 지정한 include 폴더에서 헤더파일을 찾아라
+##  헤더파일에는 무잇이 들어있는가
+    - 헤더파일에는 함수의 선언만(원형) 들어가있다.
+    - 그러면 함수 내용은? >> 이미 기계어 형태로 C라이브러리에 들어가있다.
