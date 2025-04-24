@@ -13,39 +13,33 @@ public:
         this->pages = pages;
     }
 
-    bool operator == (int value) {
-        
-        if(price == value)
-        {
-            return true;
-        }
-        else return false;
-    }
-
-    bool operator == (const string& value) {
-        
-        if(title == value)
-        {
-            return true;
-        }
-        else return false;
-    }
-
-    bool operator == (const Book&op2) {
-        
-        if(title == op2.title && price == op2.price && pages == op2.pages)
-        {
-            return true;
-        }
-        else return false;
-    }
-
+    bool operator == (string title);
+    bool operator == (int price);
+    bool operator == (Book &op2);
 
     void show() {
         cout << title << " " << price << "원 " << pages << " 페이지" << "\n";
     }
     string getTitle() { return title; }
 };
+
+bool Book::operator==(string title)
+{
+    if(this->title.compare(title)==0) return true;
+    else return false; 
+}
+
+bool Book::operator==(int price)
+{
+    if(this->price==price) return true;
+    else return false;
+}
+
+bool Book::operator==(Book &op2)
+{
+    if(this->pages==op2.pages && this->price==op2.price && this->title.compare(op2.title)==0) return true;
+    else return false;
+}
 
 int main()
 {

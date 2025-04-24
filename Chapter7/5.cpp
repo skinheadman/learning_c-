@@ -10,20 +10,25 @@ class Color
     void setColor(int r, int g, int b) { red = r; green = g; blue = b;}
     void show() { cout << red << " " << green << " " << blue << "\n";}
 
-    Color operator +(const Color& op1)
-    {
-        red = red + op1.red;
-        green = green + op1.green;
-        blue = blue + op1.blue;
-        return *this;
-    }
-
-    bool operator ==(const Color&op1)
-    {
-        if(red == op1.red && blue == op1.blue && green == op1.green) return true;
-        else return false;
-    }
+    Color& operator + (Color op2);
+    bool operator == (Color op2);
+        
 };
+
+Color& Color::operator + (Color op2)
+{
+    this->red += op2.red;
+    this->green += op2.green;
+    this->blue += op2.blue;
+    return *this;
+}
+
+bool Color::operator == (Color op2)
+{
+    if(this->red==op2.red && this->blue==op2.blue && this->green==op2.green) return true;
+    else return false;
+}
+
 
 int main()
 {

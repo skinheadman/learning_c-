@@ -2,6 +2,12 @@
 #include <string>
 using namespace std;
 
+class Book;
+bool operator == (Book op1, string title);
+bool operator == (Book op1, int price);
+bool operator == (Book op1, Book op2);
+
+
 class Book {
     string title;
     int price, pages;
@@ -13,39 +19,34 @@ public:
         this->pages = pages;
     }
 
-    friend bool operator == (Book& op1, int value) {
-        
-        if(op1.price == value)
-        {
-            return true;
-        }
-        else return false;
-    }
-
-    friend bool operator == (const Book& op1, string value) {
-        
-        if(op1.title == value)
-        {
-            return true;
-        }
-        else return false;
-    }
-
-    friend bool operator == (const Book&op1, const Book&op2) {
-        
-        if(op1.title == op2.title && op1.price == op2.price && op1.pages == op2.pages)
-        {
-            return true;
-        }
-        else return false;
-    }
-
+    friend bool operator == (Book op1, string title);
+    friend bool operator == (Book op1, int price);
+    friend bool operator == (Book op1, Book op2);
 
     void show() {
         cout << title << " " << price << "원 " << pages << " 페이지" << "\n";
     }
     string getTitle() { return title; }
 };
+
+bool operator == (Book op1, string title)
+{
+    if(op1.title.compare(title)==0) return true;
+    else return false;
+}
+
+bool operator == (Book op1, int price)
+{
+    if(op1.price == price) return true;
+    else return false;
+}
+
+bool operator == (Book op1, Book op2)
+{
+    if(op1.title.compare(op2.title)==0 && op1.price==op2.price && op1.pages == op2.pages) return true;
+    else return false;
+}
+
 
 int main()
 {

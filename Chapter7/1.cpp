@@ -2,10 +2,6 @@
 #include <string>
 using namespace std;
 
-class Book;
-
-Book& operator -= (Book& op1, int value);
-
 class Book {
     string title;
     int price, pages;
@@ -17,12 +13,8 @@ public:
         this->pages = pages;
     }
 
-    friend Book& operator -= (Book& op1, int value);
-
-    Book& operator += (int value) {
-        price = price + value;
-        return *this;
-    }
+    Book operator+=(int price);
+    Book operator-=(int price);
 
     void show() {
         cout << title << " " << price << "원 " << pages << " 페이지" << "\n";
@@ -30,18 +22,21 @@ public:
     string getTitle() { return title; }
 };
 
+Book Book::operator += (int price)
+{
+    this->price += price;
+}
 
-Book& operator -= (Book& op1, int value) {
-    op1.price = op1.price - value;
-    return op1;
+Book Book::operator-=(int price)
+{
+    this->price-=price;
 }
 
 int main()
 {
     Book a("청춘", 20000, 300), b("미래", 30000, 500);
-    a += 500; 
-    b -= 500; 
-
+    a+=500;
+    b-=500;
     a.show();
     b.show();
 }

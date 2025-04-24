@@ -161,3 +161,19 @@
 //     Circle b;
 //     cout << "생존하고 있는 원의 개수 = " << Circle::getNumOfCircles() << "\n";
 // }
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<=i;j++)
+        {
+            cout << '*';
+        }
+        cout << "\n";
+    }
+}

@@ -18,13 +18,9 @@ public:
         this->pages = pages;
     }
 
-    friend Book& operator -= (Book& op1, int value) {
-        op1.price = op1.price - value;
-    }
+    friend Book& operator -= (Book& op1, int value);
 
-    friend Book& operator += (Book& op1, int value) {
-        op1.price = op1.price + value;
-    }
+    friend Book& operator += (Book& op1, int value);
 
     void show() {
         cout << title << " " << price << "원 " << pages << " 페이지" << "\n";
@@ -32,6 +28,15 @@ public:
     string getTitle() { return title; }
 };
 
+Book& operator += (Book&op1, int value)
+{
+    op1.price += value;
+}
+
+Book& operator -= (Book&op1, int value)
+{
+    op1.price -= value;
+}
 
 int main()
 {

@@ -2,6 +2,11 @@
 #include <string>
 using namespace std;
 
+class Book;
+
+bool operator < (string op2, const Book &op1);
+
+
 class Book {
     string title;
     int price, pages;
@@ -13,7 +18,7 @@ public:
         this->pages = pages;
     }
 
-    friend bool operator < (Book&op1, const string op2);
+    friend bool operator < (string op2, const Book& op1);    
 
     void show() {
         cout << title << " " << price << "원 " << pages << " 페이지" << "\n";
@@ -21,11 +26,13 @@ public:
     string getTitle() { return title; }
 };
 
-bool operator < (const string op2,Book&op1)
+bool operator < (string op2, const Book& op1)
 {
-    if(op2.compare(op1.getTitle())==-1) return true;
+    if(op1.title.compare(op2)==1) return true;
     else return false;
 }
+
+
 
 int main()
 {
