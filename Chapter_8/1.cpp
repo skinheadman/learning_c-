@@ -11,11 +11,11 @@ class Circle
     double getArea() { return 3.14*radius*radius; }
 };
 
-class NamedCirce : public Circle
+class NamedCircle : public Circle
 {
     string name;
     public :
-    NamedCirce(int radius, string name)
+    NamedCircle(int radius, string name)
     {
         this->name = name;
         setRadius(radius);
@@ -28,6 +28,6 @@ class NamedCirce : public Circle
 
 int main()
 {
-    NamedCirce waffle(3, "waffle");
+    NamedCircle waffle(3, "waffle");
     waffle.show();
 }
