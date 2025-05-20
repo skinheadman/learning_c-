@@ -2,7 +2,7 @@
 using namespace std;
 
 template <class TYPE>
-bool equals(TYPE x, TYPE y)
+TYPE equals(TYPE x, int y)
 {
     if(x==y) return true;
     else return false;
