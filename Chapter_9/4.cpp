@@ -34,23 +34,40 @@ void LoopAdder :: run() {
     write();
 }
 
-class ForLoopAdder : public LoopAdder {
-    string name;
+class WhileLoopAdder : public LoopAdder {
     public:
-    ForLoopAdder(string name="") : LoopAdder(name) {}
+    WhileLoopAdder(string name="") : LoopAdder(name) {}
 
     int calculate();
 };
 
-int ForLoopAdder::calculate() {
+int WhileLoopAdder::calculate() {
     int sum = 0;
-    for(int i=getX();i<=getY();i++) {
-        sum +=i;
+    int start = getX();
+    while(start!=getY()+1) {
+        sum+=start++;
     }
     return sum;
 }
 
+class DoWhileLoopAdder : public LoopAdder {
+    public:
+    DoWhileLoopAdder(string name="") : LoopAdder(name) {}
+    int calculate();
+};
+
+int DoWhileLoopAdder::calculate() {
+    int sum=0;
+    int start = getX();
+    do{
+        sum+=start++;
+    }while(start!=getY()+1);
+    return sum;
+}
+
 int main() {
-    ForLoopAdder forLoop("For Loop");
-    forLoop.run();
+    WhileLoopAdder whileLoop("While Loop");
+    DoWhileLoopAdder dowhileLoop("Do while Loop");
+    whileLoop.run();
+    dowhileLoop.run();
 }
