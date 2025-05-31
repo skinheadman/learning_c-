@@ -115,7 +115,7 @@
         -> 즉, 소수점 뒷자리를 지정
 #   11.4.3. 조작자
     - 스트림 조작자  함수 
-    - ANSI/ISO 표준 C++ 헤더파일에 정의된 특별한 원형을 가진 함수
+    - ANSI/ISO 표준 C++ 헤더파일(C++ 표준 라이브러리)에 정의된 특별한 원형을 가진 함수
     - 매개 변수 1개, 매개 변수 없는 조작자로 나뉨
     - 항상 <<, >> 연산자와 함께 사용됨.
     - 종류(매개 변수 x)
@@ -124,6 +124,8 @@
         - endl : 버퍼에 있는 데이터를 모두 출력하고 한 줄 띄도록 포맷
         - dec : 10진수 형식으로 포맷
         - showpos : + 부호 붙이기기
+        - boolalpha : true, false를 문자로 출력
+
     - 매개 변수를 가지는 조작자
         - <iomanip> 헤더 파일에 정의됨.
     - 종류(매개 변수 1)
@@ -152,6 +154,7 @@
             - 스트림의 복사본이 리턴됨.
             - 그 다음에 실행되는 << 연산은 복사된 스트림에 출력
             - 연속되는 두 << 연산이 서로 다른 출력 스트림에 출력하게 됨.
+            - cout을 리턴받아야 하므로 ostream 객체인 cout 본인을 가리키는 포인터 this의 역참조를 통해 cout을 리턴해준다.
     - 구체적인 실행 과정
         ex. cout << 'a' << 123;
         1. << 연산자 함수 호출
@@ -170,7 +173,7 @@
         - ostream& operator << (ostream& outs, UserClass obj);
         - ostream& operator << (ostream& outs, UserClass& obj);
         -> 둘다 가능
-        - 외부 함수로만 작성되어야 함.
+        - 클래스 외부의 연산자 함수로만 작성되어야 함.
         - UserClass의 private 멤버에 접근하는 경우, UserClass에 프렌드 선언 필요
 #   11.5.4. 추출 연산자의 중복
     - >> 연산자 : 추출 연산자
@@ -181,6 +184,11 @@
     1. Point 클래스 제작
     2. 외부 함수로 >> 연산자 함수 작성
     3. 모든 매개 변수를 참조 타입으로 선언 -> 원본 객체에 값을 쓰기 위해서
+        -> 코드
+        istream& operator >> (istream& stream, Point& a) {
+            ...// stream으로부터 입력받는 코드
+            return stream;
+        }
     4. friend 등록
     - 사용자 정의 추출 연산자 함수의 원형
         - istream& operator >> (istream& ins, UserClass& obj)
@@ -195,4 +203,7 @@
     - 매개 변수 없는 조작자의 원형
         - istream& manipulatorFunction (istream& ins)
         - ostream& manipulatorFunction (ostream& outs)
-        
+    - ostream& fivestar(ostream& outs) {
+        return outs << "*****"; 
+    }
+    // 대충 이런 느낌
